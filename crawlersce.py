@@ -93,8 +93,8 @@ def save_comments_to_csv(comments, video_bv):
 
 
 if __name__ == '__main__':
-    video_name = '直升机到底安全吗'
-    video_bv = 'BV1Ax4y1H74L'
+    video_name = ''
+    video_bv = ''
     
     print(f'开始爬取视频: {video_name}({video_bv})')
     comments = fetch_comments(video_bv)
