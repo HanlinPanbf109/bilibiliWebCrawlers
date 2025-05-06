@@ -5,7 +5,7 @@ import os
 from typing import List, Dict
 
 headers = {
-    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36 Edg/135.0.0.0'
+    'User-Agent': ''
 }
 
 def fetch_replies(comment, video_id, root_uname: str = "", depth: int = 1) -> List[Dict]:
