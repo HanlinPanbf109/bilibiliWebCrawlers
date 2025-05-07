@@ -8,7 +8,7 @@ def analyze_daily_first_level_comments():
     统计每日一级评论数并绘制条形图（直接指定文件路径）
     """
     # 直接在此处指定文件路径 ↓
-    input_csv = "./result/不打瓦后悔一辈子.csv"
+    input_csv = ".csv"
     
     try:
         # 1. 检查文件是否存在
@@ -59,15 +59,7 @@ def analyze_daily_first_level_comments():
         plt.savefig(output_file, dpi=300, bbox_inches='tight')
         plt.close()
         
-        # 11. 打印结果
-        print(f"\n分析完成！图表已保存至: {output_file}")
-        print("\n每日一级评论统计:")
-        print(daily_counts.to_string())
-        print(f"\n统计摘要:")
-        print(f"- 日期范围: {dates[0]} 至 {dates[-1]}")
-        print(f"- 总一级评论数: {len(first_level)}")
-        print(f"- 最高单日评论数: {max(counts)} (日期: {dates[counts.argmax()]})")
-        
+
     except Exception as e:
         print(f"\n处理过程中出错: {str(e)}")
 
