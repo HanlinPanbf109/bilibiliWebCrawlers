@@ -2,22 +2,16 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import os
 
-# ✅ 文件路径列表
+# 文件路径列表
 csv_files = [
-    "./result/键帽TV.csv",
-    "./result/流浪猫是我爹！.csv",
-    "./result/路上猫饼.csv",
-    "./result/射杀流浪猫.csv",
-    "./result/流浪猫问题.csv",
-    "./result/武器耄耋.csv",
-    "./result/圆头耄耋.csv"
+
 ]
 
-# ✅ 主要梗关键词（命中加点赞数）
-primary_keywords = ["猫爹", "猫跌", "耄耋", "帽跌"]
+# 主要梗关键词（命中乘点赞数）
+primary_keywords = []
 
-# ✅ 次级梗关键词（命中加1分）
-secondary_keywords = ["猫", "帽", "耄", "耋", "爹", "跌", "蝶", "爱猫"]
+# 次级梗关键词（命中加1分）
+secondary_keywords = []
 
 # 存储每个文件的梗词得分和总评论数
 meme_scores = []
@@ -29,11 +23,11 @@ for file in csv_files:
     meme_score = 0
     comment_count = 0
     try:
-        # ✅ 读取CSV
+        # 读取CSV
         df = pd.read_csv(file, encoding="utf-8-sig")
         df.columns = df.columns.str.strip().str.replace('\ufeff', '').str.replace('　', '').str.replace(' ', '')
 
-        # ✅ 自动识别评论列和点赞列
+        # 自动识别评论列和点赞列
         comment_col = next((col for col in df.columns if '评论内容' in col), None)
         like_col = next((col for col in df.columns if '赞' in col), None)
 
@@ -46,11 +40,11 @@ for file in csv_files:
         df[comment_col] = df[comment_col].astype(str)
         df[like_col] = pd.to_numeric(df[like_col], errors='coerce').fillna(0).astype(int)
 
-        # ✅ 计算总评论数
+        # 计算总评论数
         comment_count = len(df)
         total_comments.append(comment_count)
 
-        # ✅ 分析每条评论
+        # 分析每条评论
         primary_match_count = 0
         secondary_match_count = 0
         for _, row in df.iterrows():
@@ -69,7 +63,7 @@ for file in csv_files:
                 meme_score += 1
                 secondary_match_count += 1
 
-        print(f"✅ {file}: matched {primary_match_count} primary and {secondary_match_count} secondary comments, raw score: {meme_score}, total comments: {comment_count}")
+        print(f" {file}: matched {primary_match_count} primary and {secondary_match_count} secondary comments, raw score: {meme_score}, total comments: {comment_count}")
         meme_scores.append(meme_score)
 
     except Exception as e:
@@ -77,10 +71,10 @@ for file in csv_files:
         meme_scores.append(0)
         total_comments.append(1)  # 避免除以0
 
-# ✅ 归一化处理（得分 / 总评论数）
+# 归一化处理（得分 / 总评论数）
 normalized_scores = [score / comments if comments > 0 else 0 for score, comments in zip(meme_scores, total_comments)]
 
-# ✅ 绘制条形图
+# 绘制条形图
 plt.figure(figsize=(10, 6))
 plt.bar(file_labels, normalized_scores, color="skyblue")
 plt.title("Normalized Meme Influence Score (Score per Comment)", fontsize=16)
