@@ -6,32 +6,12 @@ import numpy as np
 
 # 文件路径列表（中文标题）
 csv_files = [
-    "./result/键帽TV.csv",
-    "./result/流浪猫是我爹！.csv",
-    "./result/路上猫饼.csv",
-    "./result/射杀流浪猫.csv",
-    "./result/流浪猫问题.csv",
-    "./result/武器耄耋.csv",
-    "./result/圆头耄耋.csv"
+
 ]
 
 # 自定义攻击性词典（可扩展）
 aggressive_words = {
-    "变态": 1.0,
-    "虐杀": 1.0,
-    "心理变态": 1.0,
-    "虐猫": 1.0,
-    "犯法": 0.8,
-    "虐待": 0.9,
-    "犯罪": 0.9,
-    "杀人": 1.0,
-    "杀": 0.7,
-    "恶心": 0.8,
-    "可怕": 0.7,
-    "人渣": 1.0,
-    "伤害": 0.7,
-    "去死": 1.0,
-    "该死": 0.9
+
 }
 
 # 加载自定义词典
@@ -94,7 +74,7 @@ plt.figure(figsize=(12, 6))
 bars = plt.bar(file_labels, results, color=['#ff6b6b' if x > max(results)*0.7 else '#74b9ff' for x in results])
 
 plt.title("视频评论区攻击性指数分析", fontsize=16, pad=20)
-plt.ylabel("攻击性指数（每100条评论）", fontsize=12)
+plt.ylabel("攻击性指数", fontsize=12)
 plt.xlabel("视频主题", fontsize=12)
 plt.xticks(rotation=45, ha='right')
 
