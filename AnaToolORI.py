@@ -3,15 +3,9 @@ import matplotlib.pyplot as plt
 import os
 import jieba
 
-# 文件路径列表（中文标题）
+# 文件路径列表
 csv_files = [
-    "./result/catproblem.csv",
-    "./result/catisdad.csv",
-    "./result/shootcat.csv",
-    "./result/jiancatTV.csv",
-    "./result/roadcat.csv",
-    "./result/wuqimaodie.csv",
-    "./result/yuantoumaodie.csv"
+
 ]
 
 # 定义分级词典
